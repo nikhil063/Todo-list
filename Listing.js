@@ -2,8 +2,8 @@ import { useState } from "react";
 const Listing = ({ data, setData }) => {
   const [enableEdit, setEnableEdit] = useState({ state: false, index: "" });
   const [editData, setEditData] = useState();
+  
   const handleEdit = (index) => {
-    console.log("data here", data[index]);
     setEditData(data[index]);
     setEnableEdit({ state: !enableEdit?.state, index: index });
   };
@@ -14,7 +14,6 @@ const Listing = ({ data, setData }) => {
     setEnableEdit({ ...enableEdit, state: !enableEdit?.state });
   };
   const handleDelete = (index) => {
-    console.log("index", index);
     let temp = data?.filter((i) => i !== index);
     setData(temp);
   };
