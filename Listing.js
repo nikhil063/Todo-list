@@ -2,8 +2,9 @@ import { useState } from "react";
 const Listing = ({ data, setData }) => {
   const [enableEdit, setEnableEdit] = useState({ state: false, index: "" });
   const [editData, setEditData] = useState();
-  
+
   const handleEdit = (index) => {
+    console.log("data here", data[index]);
     setEditData(data[index]);
     setEnableEdit({ state: !enableEdit?.state, index: index });
   };
@@ -14,19 +15,21 @@ const Listing = ({ data, setData }) => {
     setEnableEdit({ ...enableEdit, state: !enableEdit?.state });
   };
   const handleDelete = (index) => {
-    let temp = data?.filter((i) => i !== index);
+    console.log("index", index);
+    let temp = data?.filter((item, i) => i != index);
     setData(temp);
   };
   return (
     <div>
       {data.map((item, index) => (
-        <div  style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-          width:"50%"
-        }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center"
+          }}
+        >
           {enableEdit?.state && (
             <div>
               <input
