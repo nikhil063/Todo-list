@@ -4,18 +4,19 @@ const Listing = ({ data, setData }) => {
   const [editData, setEditData] = useState();
 
   const handleEdit = (index) => {
-    console.log("data here", data[index]);
+    
     setEditData(data[index]);
     setEnableEdit({ state: !enableEdit?.state, index: index });
   };
+  
   const handleEditSubmit = () => {
     let temp = data;
     temp[enableEdit?.index] = editData;
     setData(temp);
     setEnableEdit({ ...enableEdit, state: !enableEdit?.state });
   };
+  
   const handleDelete = (index) => {
-    console.log("index", index);
     let temp = data?.filter((item, i) => i != index);
     setData(temp);
   };
@@ -47,4 +48,5 @@ const Listing = ({ data, setData }) => {
     </div>
   );
 };
+
 export default Listing;
